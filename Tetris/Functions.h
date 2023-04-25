@@ -32,6 +32,15 @@
 #define J_TETROMINO 6
 #define L_TETROMINO 7
 
+// Tetromino rotations
+#define ROTATION_0      1
+#define ROTATION_90     2
+#define ROTATION_180    3
+#define ROTATION_270    4
+
+
+
+
 // Functions
 RECT GetCanvasRect(RECT clientRect, int blockSize);
 HBRUSH CreateBrush(int color);

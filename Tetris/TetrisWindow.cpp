@@ -3,7 +3,7 @@
 
 Canvas canvas;
 RECT clientRect;
-Tetromino tetromino(0, 0, Z_TETROMINO);
+Tetromino tetromino(0, 0, S_TETROMINO);
 HDC hdc;
 PAINTSTRUCT ps;
 
@@ -41,6 +41,9 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
                     break;
                 case VK_RIGHT:
                     tetromino.move(D_RIGHT, canvas);
+                    break;
+                case VK_SPACE:
+                    tetromino.rotate(canvas);
                     break;
             }
             break;
