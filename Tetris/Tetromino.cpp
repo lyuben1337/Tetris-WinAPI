@@ -131,8 +131,6 @@ void Tetromino::rotate(Canvas canvas) {
                         break;
                 }
                 break;
-            case O_TETROMINO:
-                break;
             case T_TETROMINO:
                 switch (this->rotation) {
                     case ROTATION_0:
@@ -239,9 +237,200 @@ void Tetromino::rotate(Canvas canvas) {
                         break;
                 }
                 break;
-            case Z_TETROMINO:break;
-            case J_TETROMINO:break;
-            case L_TETROMINO:break;
+            case Z_TETROMINO:
+                switch (this->rotation) {
+                    case ROTATION_0:
+                        newCoordinate = this->blocks[0].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 1);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[0].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[1].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX());
+                        newCoordinate.setY(newCoordinate.getY() + 1);
+                        this->blocks[1].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[2].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 1);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[2].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[3].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 2);
+                        newCoordinate.setY(newCoordinate.getY() + 1);
+                        this->blocks[3].setCoordinate(newCoordinate);
+                        this->rotation = ROTATION_90;
+                        break;
+                    case ROTATION_90:
+                        newCoordinate = this->blocks[0].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 1);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[0].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[1].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX());
+                        newCoordinate.setY(newCoordinate.getY() - 1);
+                        this->blocks[1].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[2].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 1);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[2].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[3].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 2);
+                        newCoordinate.setY(newCoordinate.getY() - 1);
+                        this->blocks[3].setCoordinate(newCoordinate);
+                        this->rotation = ROTATION_0;
+                        break;
+                }
+                break;
+            case J_TETROMINO:
+                switch (this->rotation) {
+                    case ROTATION_0:
+                        newCoordinate = this->blocks[0].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 1);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[0].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[1].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX());
+                        newCoordinate.setY(newCoordinate.getY() - 1);
+                        this->blocks[1].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[2].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 1);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[2].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[3].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 2);
+                        newCoordinate.setY(newCoordinate.getY() + 1);
+                        this->blocks[3].setCoordinate(newCoordinate);
+                        this->rotation = ROTATION_90;
+                        break;
+                    case ROTATION_90:
+                        newCoordinate = this->blocks[0].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 1);
+                        newCoordinate.setY(newCoordinate.getY() + 1);
+                        this->blocks[0].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[1].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 2);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[1].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[2].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 1);
+                        newCoordinate.setY(newCoordinate.getY() - 1);
+                        this->blocks[2].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[3].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX());
+                        newCoordinate.setY(newCoordinate.getY() - 2);
+                        this->blocks[3].setCoordinate(newCoordinate);
+                        this->rotation = ROTATION_180;
+                        break;
+                    case ROTATION_180:
+                        newCoordinate = this->blocks[0].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 2);
+                        newCoordinate.setY(newCoordinate.getY() + 1);
+                        this->blocks[0].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[1].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 1);
+                        newCoordinate.setY(newCoordinate.getY() + 2);
+                        this->blocks[1].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[2].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX());
+                        newCoordinate.setY(newCoordinate.getY() + 1);
+                        this->blocks[2].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[3].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 1);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[3].setCoordinate(newCoordinate);
+                        this->rotation = ROTATION_270;
+                        break;
+                    case ROTATION_270:
+                        newCoordinate = this->blocks[0].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX());
+                        newCoordinate.setY(newCoordinate.getY() - 2);
+                        this->blocks[0].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[1].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 1);
+                        newCoordinate.setY(newCoordinate.getY() - 1);
+                        this->blocks[1].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[3].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 1);
+                        newCoordinate.setY(newCoordinate.getY() + 1);
+                        this->blocks[3].setCoordinate(newCoordinate);
+                        this->rotation = ROTATION_0;
+                        break;
+                }
+                break;
+            case L_TETROMINO:
+                switch (this->rotation) {
+                    case ROTATION_0:
+                        newCoordinate = this->blocks[0].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 2);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[0].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[1].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 1);
+                        newCoordinate.setY(newCoordinate.getY() - 1);
+                        this->blocks[1].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[2].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX());
+                        newCoordinate.setY(newCoordinate.getY() - 2);
+                        this->blocks[2].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[3].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 1);
+                        newCoordinate.setY(newCoordinate.getY() - 1);
+                        this->blocks[3].setCoordinate(newCoordinate);
+                        this->rotation = ROTATION_90;
+                        break;
+                    case ROTATION_90:
+                        newCoordinate = this->blocks[0].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 1);
+                        newCoordinate.setY(newCoordinate.getY() + 2);
+                        this->blocks[0].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[1].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX());
+                        newCoordinate.setY(newCoordinate.getY() + 1);
+                        this->blocks[1].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[2].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 1);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[2].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[3].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX());
+                        newCoordinate.setY(newCoordinate.getY() - 1);
+                        this->blocks[3].setCoordinate(newCoordinate);
+                        this->rotation = ROTATION_180;
+                        break;
+                    case ROTATION_180:
+                        newCoordinate = this->blocks[0].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 1);
+                        newCoordinate.setY(newCoordinate.getY() - 1);
+                        this->blocks[0].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[2].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 1);
+                        newCoordinate.setY(newCoordinate.getY() + 1);
+                        this->blocks[2].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[3].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() + 2);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[3].setCoordinate(newCoordinate);
+                        this->rotation = ROTATION_270;
+                        break;
+                    case ROTATION_270:
+                        newCoordinate = this->blocks[0].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX());
+                        newCoordinate.setY(newCoordinate.getY() - 1);
+                        this->blocks[0].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[1].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 1);
+                        newCoordinate.setY(newCoordinate.getY());
+                        this->blocks[1].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[2].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 2);
+                        newCoordinate.setY(newCoordinate.getY() + 1);
+                        this->blocks[2].setCoordinate(newCoordinate);
+                        newCoordinate = this->blocks[3].getCoordinate();
+                        newCoordinate.setX(newCoordinate.getX() - 1);
+                        newCoordinate.setY(newCoordinate.getY() + 2);
+                        this->blocks[3].setCoordinate(newCoordinate);
+                        this->rotation = ROTATION_0;
+                        break;
+                }
+                break;
             default:
                 break;
         }
@@ -332,8 +521,6 @@ bool Tetromino::canRotate(Canvas canvas) {
                     return true;
             }
             return true;
-        case O_TETROMINO:
-            return false;
         case T_TETROMINO:
             switch (this->rotation) {
                 case ROTATION_0:
@@ -475,13 +662,266 @@ bool Tetromino::canRotate(Canvas canvas) {
             }
             return true;
         case Z_TETROMINO:
+            switch (this->rotation) {
+                case ROTATION_0:
+                    newCoordinate = this->blocks[0].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[1].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX());
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[2].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[3].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 2);
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    return true;
+                case ROTATION_90:
+                    newCoordinate = this->blocks[0].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[1].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX());
+                    newCoordinate.setY(newCoordinate.getY() - 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[2].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[3].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 2);
+                    newCoordinate.setY(newCoordinate.getY() - 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    return true;
+            }
             return true;
         case J_TETROMINO:
+            switch (this->rotation) {
+                case ROTATION_0:
+                    newCoordinate = this->blocks[0].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[1].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX());
+                    newCoordinate.setY(newCoordinate.getY() - 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[2].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[3].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 2);
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    return true;
+                case ROTATION_90:
+                    newCoordinate = this->blocks[0].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[1].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 2);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[2].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    newCoordinate.setY(newCoordinate.getY() - 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[3].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX());
+                    newCoordinate.setY(newCoordinate.getY() - 2);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    return true;
+                case ROTATION_180:
+                    newCoordinate = this->blocks[0].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 2);
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[1].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    newCoordinate.setY(newCoordinate.getY() + 2);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[2].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX());
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[3].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    return true;
+                case ROTATION_270:
+                    newCoordinate = this->blocks[0].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX());
+                    newCoordinate.setY(newCoordinate.getY() - 2);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[1].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    newCoordinate.setY(newCoordinate.getY() - 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[3].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    return true;
+            }
             return true;
         case L_TETROMINO:
+            switch (this->rotation) {
+                case ROTATION_0:
+                    newCoordinate = this->blocks[0].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 2);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[1].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    newCoordinate.setY(newCoordinate.getY() - 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[2].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX());
+                    newCoordinate.setY(newCoordinate.getY() - 2);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[3].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    newCoordinate.setY(newCoordinate.getY() - 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    return true;
+                case ROTATION_90:
+                    newCoordinate = this->blocks[0].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    newCoordinate.setY(newCoordinate.getY() + 2);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[1].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX());
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[2].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[3].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX());
+                    newCoordinate.setY(newCoordinate.getY() - 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    return true;
+                case ROTATION_180:
+                    newCoordinate = this->blocks[0].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    newCoordinate.setY(newCoordinate.getY() - 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[2].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[3].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 2);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    return true;
+                case ROTATION_270:
+                    newCoordinate = this->blocks[0].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX());
+                    newCoordinate.setY(newCoordinate.getY() - 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[1].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    newCoordinate.setY(newCoordinate.getY());
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[2].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 2);
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    newCoordinate = this->blocks[3].getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    newCoordinate.setY(newCoordinate.getY() + 2);
+                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                        return false;
+                    }
+                    return true;
+            }
             return true;
         default:
             return false;
     }
 }
-#pragma clang diagnostic pop
