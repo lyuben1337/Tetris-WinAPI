@@ -1,3 +1,9 @@
+# IDE folders
+cmake-build-debug
+
+# CMakeLists
+CMakeLists.txt
+
 # Prerequisites
 *.d
 
