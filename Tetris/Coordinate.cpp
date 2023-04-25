@@ -31,3 +31,5 @@ bool Coordinate::operator<(const Coordinate &other) const {
     }
     return y < other.y;
 }
+
+Coordinate::Coordinate() = default;

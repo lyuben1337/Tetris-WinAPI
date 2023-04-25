@@ -5,20 +5,21 @@
 #include <windows.h>
 #include "Canvas.h"
 #include "Functions.h"
+#include "Block.h"
 
 
 class TetrisWindow {
 public:
     TetrisWindow(HINSTANCE hInstance, LPCTSTR title);
 
-    void RunMessageLoop();
+    static void RunMessageLoop();
 
 private:
-    HWND hWnd;
+    HWND hWnd{};
 
     static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-    ATOM MyRegisterClass(HINSTANCE hInstance);
+    static ATOM MyRegisterClass(HINSTANCE hInstance);
 
     BOOL InitInstance(HINSTANCE hInstance, LPCTSTR title);
 

@@ -19,11 +19,13 @@ public:
 
     Coordinate(int x, int y);
 
+    Coordinate();
+
     bool operator<(const Coordinate& other) const;
 
 private:
-    int x;
-    int y;
+    int x{};
+    int y{};
 };
 
 

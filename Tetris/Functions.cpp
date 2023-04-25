@@ -14,3 +14,22 @@ RECT GetCanvasRect(RECT clientRect, int blockSize) {
 
     return canvasRect;
 }
+
+HBRUSH CreateBrush(int color) {
+    switch (color) {
+        case COLOR_YELLOW:
+            return CreateSolidBrush(RGB(255, 255, 0));
+        case COLOR_CYAN:
+            return CreateSolidBrush(RGB(0, 100, 100));
+        case COLOR_PURPLE:
+            return CreateSolidBrush(RGB(160, 32, 240));
+        case COLOR_GREEN:
+            return CreateSolidBrush(RGB(0, 255, 0));
+        case COLOR_RED:
+            return CreateSolidBrush(RGB(255, 0, 0));
+        case COLOR_BLUE:
+            return CreateSolidBrush(RGB(0, 0, 255));
+        case COLOR_ORANGE:
+            return CreateSolidBrush(RGB(255, 186, 0));
+    }
+}
