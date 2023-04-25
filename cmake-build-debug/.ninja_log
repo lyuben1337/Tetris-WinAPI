@@ -33,3 +33,12 @@
 1162	1268	7041564398086896	Tetris_WinAPI.exe	f38e5f6486387a55
 3	1298	7041564545493889	CMakeFiles/Tetris_WinAPI.dir/Tetris/TetrisWindow.cpp.obj	ddf310c884d33684
 1299	1403	7041564546527940	Tetris_WinAPI.exe	f38e5f6486387a55
+3	1139	7041571596592640	CMakeFiles/Tetris_WinAPI.dir/Tetris/TetrisWindow.cpp.obj	ddf310c884d33684
+1140	1250	7041571597662874	Tetris_WinAPI.exe	f38e5f6486387a55
+3	1675	7041573301881641	CMakeFiles/Tetris_WinAPI.dir/Tetris/main.cpp.obj	b6ea6110add6eaac
+12	1687	7041573301941640	CMakeFiles/Tetris_WinAPI.dir/Tetris/Block.cpp.obj	b9aa3252babbf99c
+26	1719	7041573302332558	CMakeFiles/Tetris_WinAPI.dir/Tetris/Functions.cpp.obj	c0aa033fa03750fd
+16	1809	7041573303233095	CMakeFiles/Tetris_WinAPI.dir/Tetris/Canvas.cpp.obj	1c35e36887a71d32
+7	1900	7041573304126117	CMakeFiles/Tetris_WinAPI.dir/Tetris/TetrisWindow.cpp.obj	ddf310c884d33684
+21	1976	7041573304869876	CMakeFiles/Tetris_WinAPI.dir/Tetris/Tetromino.cpp.obj	13e3b08722b4174f
+1976	2096	7041573306056388	Tetris_WinAPI.exe	f38e5f6486387a55

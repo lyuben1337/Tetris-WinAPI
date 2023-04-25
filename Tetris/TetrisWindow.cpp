@@ -3,7 +3,7 @@
 
 Canvas canvas;
 RECT clientRect;
-Tetromino tetromino(0, 0, L_TETROMINO);
+Tetromino tetromino(0, 0, Z_TETROMINO);
 HDC hdc;
 PAINTSTRUCT ps;
 
