@@ -3,21 +3,26 @@
 
 
 #include <windows.h>
+#include "Canvas.h"
+#include "Functions.h"
+
 
 class TetrisWindow {
 public:
     TetrisWindow(HINSTANCE hInstance, LPCTSTR title);
 
-    static void RunMessageLoop();
+    void RunMessageLoop();
 
 private:
-    HWND hWnd{};
+    HWND hWnd;
 
     static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-    static ATOM MyRegisterClass(HINSTANCE hInstance);
+    ATOM MyRegisterClass(HINSTANCE hInstance);
 
     BOOL InitInstance(HINSTANCE hInstance, LPCTSTR title);
+
+    static void CALLBACK TimerRedrawingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime);
 };
 
 

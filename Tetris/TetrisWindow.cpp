@@ -1,8 +1,10 @@
-//
-// Created by lyube on 4/25/2023.
-//
-
+#include <ctime>
 #include "TetrisWindow.h"
+
+Canvas canvas;
+RECT clientRect;
+HDC hdc;
+PAINTSTRUCT ps;
 
 void TetrisWindow::RunMessageLoop() {
     MSG msg;
@@ -18,18 +20,24 @@ TetrisWindow::TetrisWindow(HINSTANCE hInstance, LPCTSTR title) {
 }
 
 LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+
     switch (message) {
         case WM_CREATE:
+            srand(time(NULL));
+            SetTimer(hWnd, 1, 50, TimerRedrawingProc);
+
+            GetClientRect(hWnd, &clientRect);
+            canvas.setRect(GetCanvasRect(clientRect, BLOCK_SIZE));
             break;
 
         case WM_PAINT:
-            HDC hdc;
-            PAINTSTRUCT ps;
             hdc = BeginPaint(hWnd, &ps);
+            canvas.draw(hdc);
             EndPaint(hWnd, &ps);
             break;
 
         case WM_DESTROY:
+            KillTimer(hWnd, 1);
             PostQuitMessage(0);
             break;
 
@@ -42,14 +50,15 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 ATOM TetrisWindow::MyRegisterClass(HINSTANCE hInstance) {
     WNDCLASSEX wcex;
     wcex.cbSize = sizeof(WNDCLASSEX);
+
     wcex.style = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc = WndProc;
+    wcex.lpfnWndProc = &TetrisWindow::WndProc;
     wcex.cbClsExtra = 0;
     wcex.cbWndExtra = 0;
     wcex.hInstance = hInstance;
     wcex.hIcon = LoadIcon(NULL, IDI_HAND);
     wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
-    wcex.hbrBackground = GetSysColorBrush(COLOR_WINDOW);
+    wcex.hbrBackground = (HBRUSH) GetStockObject(BLACK_BRUSH);
     wcex.lpszMenuName = NULL;
     wcex.lpszClassName = "Tetris";
     wcex.hIconSm = NULL;
@@ -59,11 +68,11 @@ ATOM TetrisWindow::MyRegisterClass(HINSTANCE hInstance) {
 BOOL TetrisWindow::InitInstance(HINSTANCE hInstance, LPCTSTR title) {
     hWnd = CreateWindow("Tetris",
                         title,
-                        WS_OVERLAPPEDWINDOW,
-                        CW_USEDEFAULT,
-                        CW_USEDEFAULT,
-                        CW_USEDEFAULT,
-                        CW_USEDEFAULT,
+                        WS_POPUP,
+                        0,
+                        0,
+                        GetSystemMetrics(SM_CXSCREEN),
+                        GetSystemMetrics(SM_CYSCREEN),
                         NULL,
                         NULL,
                         hInstance,
@@ -74,4 +83,8 @@ BOOL TetrisWindow::InitInstance(HINSTANCE hInstance, LPCTSTR title) {
     ShowWindow(hWnd, SW_SHOWDEFAULT);
     UpdateWindow(hWnd);
     return TRUE;
+}
+
+void TetrisWindow::TimerRedrawingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
+    InvalidateRect(hwnd, NULL, TRUE);
 }
