@@ -20,7 +20,7 @@ HBRUSH CreateBrush(int color) {
         case COLOR_YELLOW:
             return CreateSolidBrush(RGB(255, 255, 0));
         case COLOR_CYAN:
-            return CreateSolidBrush(RGB(0, 100, 100));
+            return CreateSolidBrush(RGB(48, 213, 200));
         case COLOR_PURPLE:
             return CreateSolidBrush(RGB(160, 32, 240));
         case COLOR_GREEN:
@@ -31,5 +31,7 @@ HBRUSH CreateBrush(int color) {
             return CreateSolidBrush(RGB(0, 0, 255));
         case COLOR_ORANGE:
             return CreateSolidBrush(RGB(255, 186, 0));
+        default:
+            return CreateSolidBrush(RGB(255, 255, 255));
     }
 }

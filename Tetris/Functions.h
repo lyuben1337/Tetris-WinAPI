@@ -6,8 +6,7 @@
 #include "windows.h"
 #include "Canvas.h"
 
-//Constants:
-
+// Constants
 #define BLOCK_SIZE 50
 
 // Move directions
@@ -24,7 +23,16 @@
 #define COLOR_BLUE      6
 #define COLOR_ORANGE    7
 
-//Functions:
+// Tetromino types
+#define I_TETROMINO 1
+#define O_TETROMINO 2
+#define T_TETROMINO 3
+#define S_TETROMINO 4
+#define Z_TETROMINO 5
+#define J_TETROMINO 6
+#define L_TETROMINO 7
+
+// Functions
 RECT GetCanvasRect(RECT clientRect, int blockSize);
 HBRUSH CreateBrush(int color);
 

@@ -3,6 +3,10 @@
 #include "windows.h"
 #include "map"
 #include "Coordinate.h"
+#include "vector"
+#include "Block.h"
+
+class Block;
 
 class Canvas {
 public:
@@ -17,6 +21,7 @@ public:
 private:
     RECT rect{};
     std::map<Coordinate, bool> coordinates{};
+    std::vector<Block> blocks{};
 };
 
 

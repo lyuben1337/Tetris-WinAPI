@@ -6,13 +6,16 @@
 #include "Block.h"
 #include "vector"
 #include "windows.h"
+#include "Canvas.h"
 
 class Tetromino {
 public:
-    void draw(HDC hdc);
-protected:
-    Coordinate coordinate;
-    int color;
+    Tetromino(int x, int y, int type = O_TETROMINO);
+    void draw(HDC hdc, const Canvas& canvas);
+private:
+    int type{};
+    Coordinate coordinate{};
+    int color{};
     std::vector<Block> blocks{};
 };
 

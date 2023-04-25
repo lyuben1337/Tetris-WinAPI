@@ -2,10 +2,6 @@
 #include "TetrisWindow.h"
 
 Canvas canvas;
-Block block1(0, 0, COLOR_ORANGE);
-Block block2(1, 0, COLOR_CYAN);
-Block block3(0, 1, COLOR_BLUE);
-Block block4(1, 1, COLOR_GREEN);
 RECT clientRect;
 HDC hdc;
 PAINTSTRUCT ps;
@@ -37,10 +33,13 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
         case WM_PAINT:
             hdc = BeginPaint(hWnd, &ps);
             canvas.draw(hdc);
-            block1.draw(hdc, canvas);
-            block2.draw(hdc, canvas);
-            block3.draw(hdc, canvas);
-            block4.draw(hdc, canvas);
+            ITetromino.draw(hdc, canvas);
+            JTetromino.draw(hdc, canvas);
+            LTetromino.draw(hdc, canvas);
+            OTetromino.draw(hdc, canvas);
+            STetromino.draw(hdc, canvas);
+            TTetromino.draw(hdc, canvas);
+            ZTetromino.draw(hdc, canvas);
             EndPaint(hWnd, &ps);
             break;
 

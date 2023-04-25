@@ -6,6 +6,7 @@
 #include "Canvas.h"
 #include "Functions.h"
 #include "Block.h"
+#include "Tetromino.h"
 
 
 class TetrisWindow {

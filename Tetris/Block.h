@@ -4,6 +4,9 @@
 #include "windows.h"
 #include "Functions.h"
 #include "Coordinate.h"
+#include "Canvas.h"
+
+class Canvas;
 
 class Block {
 public:
