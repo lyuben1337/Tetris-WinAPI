@@ -1,0 +1,10 @@
+# ninja log v5
+2	832	7041280896984533	CMakeFiles/Tetris_WinAPI.dir/Tetris/main.cpp.obj	b6ea6110add6eaac
+832	916	7041280897785763	Tetris_WinAPI.exe	9569d307160e0b3c
+8	918	7041282845577302	CMakeFiles/Tetris_WinAPI.dir/Tetris/main.cpp.obj	b6ea6110add6eaac
+2	927	7041282845655012	CMakeFiles/Tetris_WinAPI.dir/Tetris/TetrisWindow.cpp.obj	ddf310c884d33684
+927	1013	7041282846497721	Tetris_WinAPI.exe	2a8afdddff41d712
+2	793	7041283054700538	CMakeFiles/Tetris_WinAPI.dir/Tetris/main.cpp.obj	b6ea6110add6eaac
+793	868	7041283055407645	Tetris_WinAPI.exe	2a8afdddff41d712
+3	783	7041283210814774	CMakeFiles/Tetris_WinAPI.dir/Tetris/main.cpp.obj	b6ea6110add6eaac
+783	853	7041283211495062	Tetris_WinAPI.exe	2a8afdddff41d712
