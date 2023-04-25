@@ -56,8 +56,75 @@ Tetromino::Tetromino(int x, int y, int type) {
     }
 }
 
-void Tetromino::draw(HDC hdc, const Canvas& canvas) {
-    for (auto block : this->blocks) {
+void Tetromino::draw(HDC hdc, const Canvas &canvas) {
+    for (auto block: this->blocks) {
         block.draw(hdc, canvas);
+    }
+}
+
+void Tetromino::move(int direction, Canvas canvas) {
+    if (canMove(direction, canvas)) {
+        switch (direction) {
+            case D_DOWN:
+                for (auto &block: this->blocks) {
+                    Coordinate newCoordinate = block.getCoordinate();
+                    newCoordinate.setY(newCoordinate.getY() + 1);
+                    block.setCoordinate(newCoordinate);
+                }
+                break;
+            case D_LEFT:
+                for (auto &block: this->blocks) {
+                    Coordinate newCoordinate = block.getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() - 1);
+                    block.setCoordinate(newCoordinate);
+                }
+                break;
+            case D_RIGHT:
+                for (auto &block: this->blocks) {
+                    Coordinate newCoordinate = block.getCoordinate();
+                    newCoordinate.setX(newCoordinate.getX() + 1);
+                    block.setCoordinate(newCoordinate);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+bool Tetromino::canMove(int direction, Canvas canvas) {
+    switch (direction) {
+        case D_DOWN: {
+            for (auto block: this->blocks) {
+                Coordinate newCoordinate = block.getCoordinate();
+                newCoordinate.setY(newCoordinate.getY() + 1);
+                if (!canvas.isCoordinateFree(newCoordinate)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        case D_LEFT: {
+            for (auto block: this->blocks) {
+                Coordinate newCoordinate = block.getCoordinate();
+                newCoordinate.setX(newCoordinate.getX() - 1);
+                if (!canvas.isCoordinateFree(newCoordinate)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        case D_RIGHT: {
+            for (auto block: this->blocks) {
+                Coordinate newCoordinate = block.getCoordinate();
+                newCoordinate.setX(newCoordinate.getX() + 1);
+                if (!canvas.isCoordinateFree(newCoordinate)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        default:
+            return false;
     }
 }

@@ -5,8 +5,8 @@
 #include "Canvas.h"
 
 Canvas::Canvas() {
-    for (int i = 0; i < 20; ++i) {
-        for (int j = 0; j < 10; ++j) {
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 20; ++j) {
             Coordinate coordinate(i, j);
             coordinates[coordinate] = true;
         }
@@ -37,4 +37,8 @@ void Canvas::draw(HDC hdc) {
 
     DeleteObject(hBrushFill);
     DeleteObject(hBrushBorder);
+}
+
+bool Canvas::isCoordinateFree(const Coordinate &coordinate) {
+    return this->coordinates[coordinate];
 }

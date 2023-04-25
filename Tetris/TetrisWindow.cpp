@@ -3,6 +3,7 @@
 
 Canvas canvas;
 RECT clientRect;
+Tetromino tetromino(0, 0, Z_TETROMINO);
 HDC hdc;
 PAINTSTRUCT ps;
 
@@ -24,22 +25,31 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
     switch (message) {
         case WM_CREATE:
             srand(time(NULL));
-            SetTimer(hWnd, 1, 50, TimerRedrawingProc);
+            SetTimer(hWnd, 1, 20, TimerRedrawingProc);
 
             GetClientRect(hWnd, &clientRect);
             canvas.setRect(GetCanvasRect(clientRect, BLOCK_SIZE));
             break;
 
+        case WM_KEYDOWN: {
+            switch (wParam) {
+                case VK_DOWN:
+                    tetromino.move(D_DOWN, canvas);
+                    break;
+                case VK_LEFT:
+                    tetromino.move(D_LEFT, canvas);
+                    break;
+                case VK_RIGHT:
+                    tetromino.move(D_RIGHT, canvas);
+                    break;
+            }
+            break;
+        }
+
         case WM_PAINT:
             hdc = BeginPaint(hWnd, &ps);
             canvas.draw(hdc);
-            ITetromino.draw(hdc, canvas);
-            JTetromino.draw(hdc, canvas);
-            LTetromino.draw(hdc, canvas);
-            OTetromino.draw(hdc, canvas);
-            STetromino.draw(hdc, canvas);
-            TTetromino.draw(hdc, canvas);
-            ZTetromino.draw(hdc, canvas);
+            tetromino.draw(hdc, canvas);
             EndPaint(hWnd, &ps);
             break;
 

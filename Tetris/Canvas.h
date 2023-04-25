@@ -18,6 +18,8 @@ public:
 
     void setRect(const RECT &rect);
 
+    bool isCoordinateFree(const Coordinate &coordinate);
+
 private:
     RECT rect{};
     std::map<Coordinate, bool> coordinates{};

@@ -10,7 +10,7 @@
 #define BLOCK_SIZE 50
 
 // Move directions
-#define D_BOTTOM    1
+#define D_DOWN    1
 #define D_LEFT      2
 #define D_RIGHT     3
 
