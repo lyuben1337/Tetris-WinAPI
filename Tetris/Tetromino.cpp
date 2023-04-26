@@ -1,3 +1,4 @@
+#include <ctime>
 #include "Tetromino.h"
 
 Tetromino::Tetromino(int x, int y, int type) {
@@ -55,6 +56,36 @@ Tetromino::Tetromino(int x, int y, int type) {
             this->blocks.emplace_back(x + 1, y + 1, COLOR_YELLOW);
             break;
     }
+}
+
+Tetromino Tetromino::RandomTetromino() {
+    srand(time(NULL));
+    int x = std::rand() % 6;
+    int tetrominoType;
+    switch (std::rand() % 7) {
+        case 0:
+            tetrominoType = I_TETROMINO;
+            break;
+        case 1:
+            tetrominoType = O_TETROMINO;
+            break;
+        case 2:
+            tetrominoType = T_TETROMINO;
+            break;
+        case 3:
+            tetrominoType = S_TETROMINO;
+            break;
+        case 4:
+            tetrominoType = Z_TETROMINO;
+            break;
+        case 5:
+            tetrominoType = J_TETROMINO;
+            break;
+        case 6:
+            tetrominoType = L_TETROMINO;
+            break;
+    }
+    return {x, 0, tetrominoType};
 }
 
 void Tetromino::draw(HDC hdc, const Canvas &canvas) {
@@ -924,4 +955,8 @@ bool Tetromino::canRotate(Canvas canvas) {
         default:
             return false;
     }
+}
+
+const std::vector<Block> &Tetromino::getBlocks() const {
+    return blocks;
 }

@@ -25,6 +25,8 @@ private:
     BOOL InitInstance(HINSTANCE hInstance, LPCTSTR title);
 
     static void CALLBACK TimerRedrawingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime);
+
+    static void CALLBACK TimerFallingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime);
 };
 
 

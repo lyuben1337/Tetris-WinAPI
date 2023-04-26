@@ -20,6 +20,10 @@ public:
 
     bool isCoordinateFree(const Coordinate &coordinate);
 
+    void addBlocks(const std::vector<Block>& blocks);
+
+    const std::vector<Block> &getBlocks() const;
+
 private:
     RECT rect{};
     std::map<Coordinate, bool> coordinates{};

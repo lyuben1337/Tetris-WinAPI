@@ -12,6 +12,7 @@ void Block::draw(HDC hdc, const Canvas& canvas) {
     int blockY = canvas.getRect().top + this->coordinate.getY() * BLOCK_SIZE;
     RECT blockRect = { blockX + 1, blockY + 1, blockX + BLOCK_SIZE - 1, blockY + BLOCK_SIZE - 1 };
     FillRect(hdc, &blockRect, hBrush);
+    DeleteObject(hBrush);
 }
 
 const Coordinate &Block::getCoordinate() const {

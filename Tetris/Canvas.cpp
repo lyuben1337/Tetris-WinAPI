@@ -37,8 +37,23 @@ void Canvas::draw(HDC hdc) {
 
     DeleteObject(hBrushFill);
     DeleteObject(hBrushBorder);
+
+    for (auto& block: this->blocks) {
+        block.draw(hdc, *this);
+    }
 }
 
 bool Canvas::isCoordinateFree(const Coordinate &coordinate) {
     return this->coordinates[coordinate];
+}
+
+void Canvas::addBlocks(const std::vector<Block>& blocks) {
+    for (auto& block: blocks) {
+        this->blocks.push_back(block);
+        this->coordinates[block.getCoordinate()] = false;
+    }
+}
+
+const std::vector<Block> &Canvas::getBlocks() const {
+    return blocks;
 }

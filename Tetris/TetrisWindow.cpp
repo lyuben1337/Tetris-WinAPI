@@ -3,7 +3,7 @@
 
 Canvas canvas;
 RECT clientRect;
-Tetromino tetromino(0, 0, Z_TETROMINO);
+Tetromino currentTetromino = Tetromino::RandomTetromino();
 HDC hdc;
 PAINTSTRUCT ps;
 
@@ -24,26 +24,25 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 
     switch (message) {
         case WM_CREATE:
-            srand(time(NULL));
-            SetTimer(hWnd, 1, 20, TimerRedrawingProc);
-
             GetClientRect(hWnd, &clientRect);
             canvas.setRect(GetCanvasRect(clientRect, BLOCK_SIZE));
+            SetTimer(hWnd, 1, 20, TimerRedrawingProc);
+            SetTimer(hWnd, 2, 1500, TimerFallingProc);
             break;
 
         case WM_KEYDOWN: {
             switch (wParam) {
                 case VK_DOWN:
-                    tetromino.move(D_DOWN, canvas);
+                    currentTetromino.move(D_DOWN, canvas);
                     break;
                 case VK_LEFT:
-                    tetromino.move(D_LEFT, canvas);
+                    currentTetromino.move(D_LEFT, canvas);
                     break;
                 case VK_RIGHT:
-                    tetromino.move(D_RIGHT, canvas);
+                    currentTetromino.move(D_RIGHT, canvas);
                     break;
                 case VK_SPACE:
-                    tetromino.rotate(canvas);
+                    currentTetromino.rotate(canvas);
                     break;
             }
             break;
@@ -52,12 +51,13 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
         case WM_PAINT:
             hdc = BeginPaint(hWnd, &ps);
             canvas.draw(hdc);
-            tetromino.draw(hdc, canvas);
+            currentTetromino.draw(hdc, canvas);
             EndPaint(hWnd, &ps);
             break;
 
         case WM_DESTROY:
             KillTimer(hWnd, 1);
+            KillTimer(hWnd, 2);
             PostQuitMessage(0);
             break;
 
@@ -105,6 +105,25 @@ BOOL TetrisWindow::InitInstance(HINSTANCE hInstance, LPCTSTR title) {
     return TRUE;
 }
 
+
 void TetrisWindow::TimerRedrawingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
+    if(!currentTetromino.canMove(D_DOWN, canvas)) {
+        canvas.addBlocks(currentTetromino.getBlocks());
+        currentTetromino = Tetromino::RandomTetromino();
+        if(!currentTetromino.canMove(D_DOWN, canvas)) {
+            DestroyWindow(hwnd);
+        }
+    }
     InvalidateRect(hwnd, NULL, TRUE);
+}
+
+void TetrisWindow::TimerFallingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
+    if(!currentTetromino.canMove(D_DOWN, canvas)) {
+        canvas.addBlocks(currentTetromino.getBlocks());
+        currentTetromino = Tetromino::RandomTetromino();
+        if(!currentTetromino.canMove(D_DOWN, canvas)) {
+            DestroyWindow(hwnd);
+        }
+    }
+    currentTetromino.move(D_DOWN, canvas);
 }

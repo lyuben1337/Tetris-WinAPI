@@ -4,7 +4,6 @@
 #pragma once
 
 #include "windows.h"
-#include "Canvas.h"
 
 // Constants
 #define BLOCK_SIZE 50
