@@ -35,3 +35,15 @@ HBRUSH CreateBrush(int color) {
             return CreateSolidBrush(RGB(255, 255, 255));
     }
 }
+
+RECT GetHUDRect(RECT clientRect, int blockSize) {
+    RECT canvasRect = GetCanvasRect(clientRect, blockSize);
+    int left = canvasRect.right + 3 * blockSize;
+    int top = canvasRect.top + 4 * blockSize;
+    int right = left + 5 * blockSize;
+    int bottom = top + 10 * blockSize;
+
+    RECT HUDRect = { left, top, right, bottom };
+
+    return HUDRect;
+}

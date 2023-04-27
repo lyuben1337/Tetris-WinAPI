@@ -47,5 +47,5 @@
 // Functions
 RECT GetCanvasRect(RECT clientRect, int blockSize);
 HBRUSH CreateBrush(int color);
-
+RECT GetHUDRect(RECT clientRect, int blockSize);
 #endif //TETRIS_WINAPI_FUNCTIONS_H

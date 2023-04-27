@@ -1,11 +1,13 @@
 #include <ctime>
 #include "TetrisWindow.h"
 #include "Game.h"
+#include "HUD.h"
 
 Game game;
 RECT clientRect;
 HDC hdc;
 PAINTSTRUCT ps;
+HUD hud;
 
 void TetrisWindow::RunMessageLoop() {
     MSG msg;
@@ -26,6 +28,7 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
         case WM_CREATE:
             GetClientRect(hWnd, &clientRect);
             game.canvas = GetCanvasRect(clientRect, BLOCK_SIZE);
+            hud.setRect(GetHUDRect(clientRect, BLOCK_SIZE));
             SetTimer(hWnd, 1, 20, TimerRedrawingProc);
             SetTimer(hWnd, 2, 1500, TimerFallingProc);
             break;
@@ -51,6 +54,7 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
         case WM_PAINT:
             hdc = BeginPaint(hWnd, &ps);
             game.canvas.draw(hdc);
+            hud.draw(hdc);
             game.currentTetromino.draw(hdc, game.canvas);
             EndPaint(hWnd, &ps);
             break;
