@@ -27,6 +27,8 @@ private:
     static void CALLBACK TimerRedrawingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime);
 
     static void CALLBACK TimerFallingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime);
+
+    static void startGame();
 };
 
 

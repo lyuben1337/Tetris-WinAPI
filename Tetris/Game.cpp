@@ -33,7 +33,7 @@ Game::Game(int difficulty) {
 }
 
 double Game::getGameTime() const {
-    return difftime(time(NULL), this->startTime);
+    return difftime(time(NULL), this->startTime) * 1000;
 }
 
 void Game::setGameOver(bool gameOver) {

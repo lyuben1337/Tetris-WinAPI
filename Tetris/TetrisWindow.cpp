@@ -27,8 +27,7 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
     switch (message) {
         case WM_CREATE:
             GetClientRect(hWnd, &clientRect);
-            game.canvas = GetCanvasRect(clientRect, BLOCK_SIZE);
-            hud.setRect(GetHUDRect(clientRect, BLOCK_SIZE));
+            startGame();
             SetTimer(hWnd, 1, 20, TimerRedrawingProc);
             SetTimer(hWnd, 2, 1500, TimerFallingProc);
             break;
@@ -54,7 +53,7 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
         case WM_PAINT:
             hdc = BeginPaint(hWnd, &ps);
             game.canvas.draw(hdc);
-            hud.draw(hdc);
+            hud.draw(hdc, game.canvas);
             game.currentTetromino.draw(hdc, game.canvas);
             EndPaint(hWnd, &ps);
             break;
@@ -114,14 +113,29 @@ void TetrisWindow::TimerRedrawingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DW
     if(!game.currentTetromino.canMove(D_DOWN, game.canvas)) {
         game.canvas.addBlocks(game.currentTetromino.getBlocks());
         game.setScore(game.getScore() + game.canvas.breakLines());
-        game.currentTetromino = Tetromino::RandomTetromino();
+        game.currentTetromino = game.nextTetromino;
+        game.nextTetromino = Tetromino::RandomTetromino();
+        hud.setNextTetrominoType(game.nextTetromino.getType());
+        hud.setScore(game.getScore());
         if(!game.currentTetromino.canMove(D_DOWN, game.canvas)) {
-            DestroyWindow(hwnd);
+            startGame();
+            MessageBoxA(hwnd, "GAME OVER!", "GAME OVER!", NULL);
         }
     }
+    hud.setTime(game.getGameTime());
     InvalidateRect(hwnd, NULL, TRUE);
 }
 
 void TetrisWindow::TimerFallingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
     game.currentTetromino.move(D_DOWN, game.canvas);
+}
+
+void TetrisWindow::startGame() {
+    game = Game();
+    hud = HUD();
+    game.canvas = GetCanvasRect(clientRect, BLOCK_SIZE);
+    hud.setRect(GetHUDRect(clientRect, BLOCK_SIZE));
+    hud.setNextTetrominoType(game.nextTetromino.getType());
+    hud.setTime(0);
+    hud.setScore(0);
 }

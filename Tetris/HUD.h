@@ -4,6 +4,7 @@
 #include "windows.h"
 #include "Functions.h"
 #include "Tetromino.h"
+#include "Canvas.h"
 
 
 class HUD {
@@ -13,18 +14,30 @@ public:
 
     void setRect(const RECT &rect);
 
-    const CHAR *getTime() const;
+    double getTime() const;
 
-    void setTime(const CHAR *time);
+    void setTime(double time);
 
-    void draw(HDC hdc);
+    void draw(HDC hdc, Canvas canvas);
+
+    int getNextTetrominoType() const;
+
+    void setNextTetrominoType(int nextTetrominoType);
+
+    int getScore() const;
+
+    void setScore(int score);
 
 private:
     RECT rect;
-    LPCSTR time;
+    double time;
+    int score;
     int nextTetrominoType;
 
-    void drawNextTetromino();
+    void drawNextTetromino(HDC hdc, Canvas canvas);
+    void drawTime(HDC hdc);
+    void drawScore(HDC hdc);
+
 };
 
 

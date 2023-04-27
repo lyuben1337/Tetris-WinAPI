@@ -17,6 +17,8 @@ public:
     void rotate(Canvas canvas);
     bool canMove(int direction, Canvas canvas);
     const std::vector<Block> &getBlocks() const;
+    int getType() const;
+
 private:
     int type{};
     int rotation{};

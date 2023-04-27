@@ -960,3 +960,7 @@ bool Tetromino::canRotate(Canvas canvas) {
 const std::vector<Block> &Tetromino::getBlocks() const {
     return blocks;
 }
+
+int Tetromino::getType() const {
+    return type;
+}
