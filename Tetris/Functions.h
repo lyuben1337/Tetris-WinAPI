@@ -8,6 +8,11 @@
 // Constants
 #define BLOCK_SIZE 50
 
+// Menu items
+#define MENU_START 1
+#define MENU_ABOUT 2
+#define MENU_EXIT  3
+
 // Difficulty level
 #define DIFFICULTY_EASY   1
 #define DIFFICULTY_MEDIUM 2
@@ -48,4 +53,5 @@
 RECT GetCanvasRect(RECT clientRect, int blockSize);
 HBRUSH CreateBrush(int color);
 RECT GetHUDRect(RECT clientRect, int blockSize);
+RECT GetMenuRect(RECT clientRect, int blockSize);
 #endif //TETRIS_WINAPI_FUNCTIONS_H

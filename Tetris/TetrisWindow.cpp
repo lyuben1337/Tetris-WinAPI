@@ -2,7 +2,9 @@
 #include "TetrisWindow.h"
 #include "Game.h"
 #include "HUD.h"
+#include "Menu.h"
 
+Menu menu;
 Game game;
 RECT clientRect;
 HDC hdc;
@@ -27,34 +29,75 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
     switch (message) {
         case WM_CREATE:
             GetClientRect(hWnd, &clientRect);
-            startGame();
+            menu.setRect(GetMenuRect(clientRect, BLOCK_SIZE));
+            menu.setOpened(true);
             SetTimer(hWnd, 1, 20, TimerRedrawingProc);
             SetTimer(hWnd, 2, 1500, TimerFallingProc);
             break;
 
         case WM_KEYDOWN: {
-            switch (wParam) {
-                case VK_DOWN:
-                    game.currentTetromino.move(D_DOWN, game.canvas);
-                    break;
-                case VK_LEFT:
-                    game.currentTetromino.move(D_LEFT, game.canvas);
-                    break;
-                case VK_RIGHT:
-                    game.currentTetromino.move(D_RIGHT, game.canvas);
-                    break;
-                case VK_SPACE:
-                    game.currentTetromino.rotate(game.canvas);
-                    break;
+            if(menu.isOpened()) {
+                switch (wParam) {
+                    case VK_DOWN:
+                        if(menu.getChosenItem() < MENU_EXIT) {
+                            menu.setChosenItem(menu.getChosenItem() + 1);
+                        }
+                        break;
+                    case VK_UP:
+                        if(menu.getChosenItem() > MENU_START) {
+                            menu.setChosenItem(menu.getChosenItem() - 1);
+                        }
+                        break;
+                    case VK_ESCAPE:
+                        menu.setOpenedAbout(false);
+                        break;
+                    case VK_RETURN: {
+                        switch (menu.getChosenItem()) {
+                            case MENU_START:
+                                menu.setOpened(false);
+                                startGame();
+                                break;
+                            case MENU_EXIT:
+                                DestroyWindow(hWnd);
+                                break;
+                            case MENU_ABOUT:
+                                menu.setOpenedAbout(true);
+                                break;
+                        }
+                    }
+                        break;
+                }
+            } else {
+                switch (wParam) {
+                    case VK_DOWN:
+                        game.currentTetromino.move(D_DOWN, game.canvas);
+                        break;
+                    case VK_LEFT:
+                        game.currentTetromino.move(D_LEFT, game.canvas);
+                        break;
+                    case VK_RIGHT:
+                        game.currentTetromino.move(D_RIGHT, game.canvas);
+                        break;
+                    case VK_SPACE:
+                        game.currentTetromino.rotate(game.canvas);
+                        break;
+                    case VK_ESCAPE:
+                        menu.setOpened(true);
+                        break;
+                }
             }
             break;
         }
 
         case WM_PAINT:
             hdc = BeginPaint(hWnd, &ps);
-            game.canvas.draw(hdc);
-            hud.draw(hdc, game.canvas);
-            game.currentTetromino.draw(hdc, game.canvas);
+            if (menu.isOpened()) {
+                menu.draw(hdc);
+            } else {
+                game.canvas.draw(hdc);
+                hud.draw(hdc, game.canvas);
+                game.currentTetromino.draw(hdc, game.canvas);
+            }
             EndPaint(hWnd, &ps);
             break;
 
@@ -110,24 +153,28 @@ BOOL TetrisWindow::InitInstance(HINSTANCE hInstance, LPCTSTR title) {
 
 
 void TetrisWindow::TimerRedrawingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
-    if(!game.currentTetromino.canMove(D_DOWN, game.canvas)) {
-        game.canvas.addBlocks(game.currentTetromino.getBlocks());
-        game.setScore(game.getScore() + game.canvas.breakLines());
-        game.currentTetromino = game.nextTetromino;
-        game.nextTetromino = Tetromino::RandomTetromino();
-        hud.setNextTetrominoType(game.nextTetromino.getType());
-        hud.setScore(game.getScore());
+    if(!menu.isOpened()) {
         if(!game.currentTetromino.canMove(D_DOWN, game.canvas)) {
-            startGame();
-            MessageBoxA(hwnd, "GAME OVER!", "GAME OVER!", NULL);
+            game.canvas.addBlocks(game.currentTetromino.getBlocks());
+            game.setScore(game.getScore() + game.canvas.breakLines());
+            game.currentTetromino = game.nextTetromino;
+            game.nextTetromino = Tetromino::RandomTetromino();
+            hud.setNextTetrominoType(game.nextTetromino.getType());
+            hud.setScore(game.getScore());
+            if(!game.currentTetromino.canMove(D_DOWN, game.canvas)) {
+                menu.setOpened(true);
+                MessageBoxA(hwnd, "GAME OVER!", "GAME OVER!", NULL);
+            }
         }
+        hud.setTime(game.getGameTime());
     }
-    hud.setTime(game.getGameTime());
     InvalidateRect(hwnd, NULL, TRUE);
 }
 
 void TetrisWindow::TimerFallingProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
-    game.currentTetromino.move(D_DOWN, game.canvas);
+    if(!menu.isOpened()) {
+        game.currentTetromino.move(D_DOWN, game.canvas);
+    }
 }
 
 void TetrisWindow::startGame() {
