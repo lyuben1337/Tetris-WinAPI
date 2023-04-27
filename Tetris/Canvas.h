@@ -12,6 +12,8 @@ class Canvas {
 public:
     Canvas();
 
+    Canvas(RECT rect);
+
     void draw(HDC hdc);
 
     const RECT &getRect() const;
@@ -22,9 +24,14 @@ public:
 
     void addBlocks(const std::vector<Block>& blocks);
 
+    int breakLines();
+
     const std::vector<Block> &getBlocks() const;
 
 private:
+
+    void breakLine(const int& i);
+
     RECT rect{};
     std::map<Coordinate, bool> coordinates{};
     std::vector<Block> blocks{};

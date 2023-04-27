@@ -8,6 +8,11 @@
 // Constants
 #define BLOCK_SIZE 50
 
+// Difficulty level
+#define DIFFICULTY_EASY   1
+#define DIFFICULTY_MEDIUM 2
+#define DIFFICULTY_HARD   3
+
 // Move directions
 #define D_DOWN  1
 #define D_LEFT  2
@@ -36,7 +41,6 @@
 #define ROTATION_90     2
 #define ROTATION_180    3
 #define ROTATION_270    4
-
 
 
 
