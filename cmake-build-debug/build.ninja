@@ -129,6 +129,7 @@ build CMakeFiles/Tetris_WinAPI.dir/Tetris/Menu.cpp.obj: CXX_COMPILER__Tetris_Win
 
 build Tetris_WinAPI.exe: CXX_EXECUTABLE_LINKER__Tetris_WinAPI_Debug CMakeFiles/Tetris_WinAPI.dir/Tetris/main.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/TetrisWindow.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Coordinate.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Canvas.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Functions.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Block.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Tetromino.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Game.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/HUD.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Menu.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -static
   LINK_LIBRARIES = -lshcore  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   POST_BUILD = cd .

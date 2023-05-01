@@ -25,9 +25,11 @@ TetrisWindow::TetrisWindow(HINSTANCE hInstance, LPCTSTR title) {
 }
 
 LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+    static HCURSOR hCursor = NULL;
 
     switch (message) {
         case WM_CREATE: {
+            hCursor = LoadCursor(NULL, IDC_ARROW);
             GetClientRect(hWnd, &clientRect);
             menu.setRect(GetMenuRect(clientRect, BLOCK_SIZE));
             menu.setOpened(true);
@@ -116,7 +118,15 @@ LRESULT TetrisWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
             }
             EndPaint(hWnd, &ps);
             break;
-
+        case WM_SETCURSOR:
+            if (LOWORD(lParam) == HTCLIENT) {
+                SetCursor(NULL);
+                return TRUE;
+            }
+            break;
+        case WM_MOUSELEAVE:
+            SetCursor(hCursor);
+            break;
         case WM_DESTROY:
             KillTimer(hWnd, 1);
             KillTimer(hWnd, 2);
