@@ -20,19 +20,9 @@ public:
 
     void setScore(int score);
 
-    bool isGameOver() const;
-
-    void setIsGameOver(bool gameOver);
-
-    explicit Game(int difficulty = DIFFICULTY_EASY);
+    explicit Game(int difficulty = DIFFICULTY_MEDIUM);
 
     double getGameTime() const;
-
-    void setGameOver(bool gameOver);
-
-    time_t getStartTime() const;
-
-    void setStartTime(time_t startTime);
 
 private:
     int difficulty{};

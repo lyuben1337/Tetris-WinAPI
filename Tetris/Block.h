@@ -11,7 +11,8 @@ class Canvas;
 class Block {
 public:
     Block(int x, int y, int color);
-    void draw(HDC hdc, const Canvas& canvas);
+
+    void draw(HDC hdc, const Canvas &canvas);
 
     const Coordinate &getCoordinate() const;
 

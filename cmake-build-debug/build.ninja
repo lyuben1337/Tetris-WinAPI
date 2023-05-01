@@ -50,62 +50,72 @@ cmake_ninja_workdir = D$:/C++$ programms/WinAPI/Tetris-WinAPI/cmake-build-debug/
 build cmake_object_order_depends_target_Tetris_WinAPI: phony || CMakeFiles/Tetris_WinAPI.dir
 
 build CMakeFiles/Tetris_WinAPI.dir/Tetris/main.cpp.obj: CXX_COMPILER__Tetris_WinAPI_Debug D$:/C++$ programms/WinAPI/Tetris-WinAPI/Tetris/main.cpp || cmake_object_order_depends_target_Tetris_WinAPI
+  DEFINES = -D_WIN32_WINNT=0x0A00
   DEP_FILE = CMakeFiles\Tetris_WinAPI.dir\Tetris\main.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   OBJECT_FILE_DIR = CMakeFiles\Tetris_WinAPI.dir\Tetris
 
 build CMakeFiles/Tetris_WinAPI.dir/Tetris/TetrisWindow.cpp.obj: CXX_COMPILER__Tetris_WinAPI_Debug D$:/C++$ programms/WinAPI/Tetris-WinAPI/Tetris/TetrisWindow.cpp || cmake_object_order_depends_target_Tetris_WinAPI
+  DEFINES = -D_WIN32_WINNT=0x0A00
   DEP_FILE = CMakeFiles\Tetris_WinAPI.dir\Tetris\TetrisWindow.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   OBJECT_FILE_DIR = CMakeFiles\Tetris_WinAPI.dir\Tetris
 
 build CMakeFiles/Tetris_WinAPI.dir/Tetris/Coordinate.cpp.obj: CXX_COMPILER__Tetris_WinAPI_Debug D$:/C++$ programms/WinAPI/Tetris-WinAPI/Tetris/Coordinate.cpp || cmake_object_order_depends_target_Tetris_WinAPI
+  DEFINES = -D_WIN32_WINNT=0x0A00
   DEP_FILE = CMakeFiles\Tetris_WinAPI.dir\Tetris\Coordinate.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   OBJECT_FILE_DIR = CMakeFiles\Tetris_WinAPI.dir\Tetris
 
 build CMakeFiles/Tetris_WinAPI.dir/Tetris/Canvas.cpp.obj: CXX_COMPILER__Tetris_WinAPI_Debug D$:/C++$ programms/WinAPI/Tetris-WinAPI/Tetris/Canvas.cpp || cmake_object_order_depends_target_Tetris_WinAPI
+  DEFINES = -D_WIN32_WINNT=0x0A00
   DEP_FILE = CMakeFiles\Tetris_WinAPI.dir\Tetris\Canvas.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   OBJECT_FILE_DIR = CMakeFiles\Tetris_WinAPI.dir\Tetris
 
 build CMakeFiles/Tetris_WinAPI.dir/Tetris/Functions.cpp.obj: CXX_COMPILER__Tetris_WinAPI_Debug D$:/C++$ programms/WinAPI/Tetris-WinAPI/Tetris/Functions.cpp || cmake_object_order_depends_target_Tetris_WinAPI
+  DEFINES = -D_WIN32_WINNT=0x0A00
   DEP_FILE = CMakeFiles\Tetris_WinAPI.dir\Tetris\Functions.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   OBJECT_FILE_DIR = CMakeFiles\Tetris_WinAPI.dir\Tetris
 
 build CMakeFiles/Tetris_WinAPI.dir/Tetris/Block.cpp.obj: CXX_COMPILER__Tetris_WinAPI_Debug D$:/C++$ programms/WinAPI/Tetris-WinAPI/Tetris/Block.cpp || cmake_object_order_depends_target_Tetris_WinAPI
+  DEFINES = -D_WIN32_WINNT=0x0A00
   DEP_FILE = CMakeFiles\Tetris_WinAPI.dir\Tetris\Block.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   OBJECT_FILE_DIR = CMakeFiles\Tetris_WinAPI.dir\Tetris
 
 build CMakeFiles/Tetris_WinAPI.dir/Tetris/Tetromino.cpp.obj: CXX_COMPILER__Tetris_WinAPI_Debug D$:/C++$ programms/WinAPI/Tetris-WinAPI/Tetris/Tetromino.cpp || cmake_object_order_depends_target_Tetris_WinAPI
+  DEFINES = -D_WIN32_WINNT=0x0A00
   DEP_FILE = CMakeFiles\Tetris_WinAPI.dir\Tetris\Tetromino.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   OBJECT_FILE_DIR = CMakeFiles\Tetris_WinAPI.dir\Tetris
 
 build CMakeFiles/Tetris_WinAPI.dir/Tetris/Game.cpp.obj: CXX_COMPILER__Tetris_WinAPI_Debug D$:/C++$ programms/WinAPI/Tetris-WinAPI/Tetris/Game.cpp || cmake_object_order_depends_target_Tetris_WinAPI
+  DEFINES = -D_WIN32_WINNT=0x0A00
   DEP_FILE = CMakeFiles\Tetris_WinAPI.dir\Tetris\Game.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   OBJECT_FILE_DIR = CMakeFiles\Tetris_WinAPI.dir\Tetris
 
 build CMakeFiles/Tetris_WinAPI.dir/Tetris/HUD.cpp.obj: CXX_COMPILER__Tetris_WinAPI_Debug D$:/C++$ programms/WinAPI/Tetris-WinAPI/Tetris/HUD.cpp || cmake_object_order_depends_target_Tetris_WinAPI
+  DEFINES = -D_WIN32_WINNT=0x0A00
   DEP_FILE = CMakeFiles\Tetris_WinAPI.dir\Tetris\HUD.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   OBJECT_FILE_DIR = CMakeFiles\Tetris_WinAPI.dir\Tetris
 
 build CMakeFiles/Tetris_WinAPI.dir/Tetris/Menu.cpp.obj: CXX_COMPILER__Tetris_WinAPI_Debug D$:/C++$ programms/WinAPI/Tetris-WinAPI/Tetris/Menu.cpp || cmake_object_order_depends_target_Tetris_WinAPI
+  DEFINES = -D_WIN32_WINNT=0x0A00
   DEP_FILE = CMakeFiles\Tetris_WinAPI.dir\Tetris\Menu.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   OBJECT_FILE_DIR = CMakeFiles\Tetris_WinAPI.dir\Tetris
 
@@ -119,7 +129,7 @@ build CMakeFiles/Tetris_WinAPI.dir/Tetris/Menu.cpp.obj: CXX_COMPILER__Tetris_Win
 
 build Tetris_WinAPI.exe: CXX_EXECUTABLE_LINKER__Tetris_WinAPI_Debug CMakeFiles/Tetris_WinAPI.dir/Tetris/main.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/TetrisWindow.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Coordinate.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Canvas.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Functions.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Block.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Tetromino.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Game.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/HUD.cpp.obj CMakeFiles/Tetris_WinAPI.dir/Tetris/Menu.cpp.obj
   FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = -lshcore  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Tetris_WinAPI.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

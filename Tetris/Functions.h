@@ -5,7 +5,7 @@
 
 #include "windows.h"
 
-// Constants
+// Block size (for 1920x1080 resolution)
 #define BLOCK_SIZE 50
 
 // Menu items
@@ -19,9 +19,9 @@
 #define DIFFICULTY_HARD   3
 
 // Move directions
-#define D_DOWN  1
-#define D_LEFT  2
-#define D_RIGHT 3
+#define DIRECTION_DOWN  1
+#define DIRECTION_LEFT  2
+#define DIRECTION_RIGHT 3
 
 // Block colors
 #define COLOR_CYAN      1
@@ -47,11 +47,13 @@
 #define ROTATION_180    3
 #define ROTATION_270    4
 
-
-
 // Functions
 RECT GetCanvasRect(RECT clientRect, int blockSize);
+
 HBRUSH CreateBrush(int color);
+
 RECT GetHUDRect(RECT clientRect, int blockSize);
+
 RECT GetMenuRect(RECT clientRect, int blockSize);
+
 #endif //TETRIS_WINAPI_FUNCTIONS_H

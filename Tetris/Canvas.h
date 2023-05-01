@@ -1,5 +1,6 @@
 #ifndef TETRIS_WINAPI_CANVAS_H
 #define TETRIS_WINAPI_CANVAS_H
+
 #include "windows.h"
 #include "map"
 #include "Coordinate.h"
@@ -22,15 +23,12 @@ public:
 
     bool isCoordinateFree(const Coordinate &coordinate);
 
-    void addBlocks(const std::vector<Block>& blocks);
+    void addBlocks(const std::vector<Block> &blocks);
 
     int breakLines();
 
-    const std::vector<Block> &getBlocks() const;
-
 private:
-
-    void breakLine(const int& i);
+    void breakLine(const int &i);
 
     RECT rect{};
     std::map<Coordinate, bool> coordinates{};

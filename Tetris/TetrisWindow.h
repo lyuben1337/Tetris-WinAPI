@@ -1,12 +1,14 @@
 #ifndef TETRIS_WINAPI_TETRISWINDOW_H
 #define TETRIS_WINAPI_TETRISWINDOW_H
 
+#define WINVER 0x0601
 
 #include <windows.h>
 #include "Canvas.h"
 #include "Functions.h"
 #include "Block.h"
 #include "Tetromino.h"
+#include <ShellScalingApi.h>
 
 
 class TetrisWindow {

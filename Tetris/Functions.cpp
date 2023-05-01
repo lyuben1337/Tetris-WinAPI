@@ -10,7 +10,7 @@ RECT GetCanvasRect(RECT clientRect, int blockSize) {
     int right = left + width;
     int bottom = top + height;
 
-    RECT canvasRect = { left, top, right, bottom };
+    RECT canvasRect = {left, top, right, bottom};
 
     return canvasRect;
 }
@@ -43,7 +43,7 @@ RECT GetHUDRect(RECT clientRect, int blockSize) {
     int right = left + 6 * blockSize;
     int bottom = top + 10 * blockSize;
 
-    RECT HUDRect = { left, top, right, bottom };
+    RECT HUDRect = {left, top, right, bottom};
 
     return HUDRect;
 }
@@ -58,7 +58,7 @@ RECT GetMenuRect(RECT clientRect, int blockSize) {
     int right = left + width;
     int bottom = top + height;
 
-    RECT menuRect = { left, top, right, bottom };
+    RECT menuRect = {left, top, right, bottom};
 
     return menuRect;
 }

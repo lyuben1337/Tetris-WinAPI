@@ -10,21 +10,13 @@
 class HUD {
 
 public:
-    const RECT &getRect() const;
-
     void setRect(const RECT &rect);
-
-    double getTime() const;
 
     void setTime(double time);
 
     void draw(HDC hdc, Canvas canvas);
 
-    int getNextTetrominoType() const;
-
     void setNextTetrominoType(int nextTetrominoType);
-
-    int getScore() const;
 
     void setScore(int score);
 
@@ -35,7 +27,9 @@ private:
     int nextTetrominoType;
 
     void drawNextTetromino(HDC hdc, Canvas canvas);
+
     void drawTime(HDC hdc);
+
     void drawScore(HDC hdc);
 
 };

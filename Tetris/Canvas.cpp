@@ -39,7 +39,7 @@ void Canvas::draw(HDC hdc) {
     DeleteObject(hBrushFill);
     DeleteObject(hBrushBorder);
 
-    for (auto& block: this->blocks) {
+    for (auto &block: this->blocks) {
         block.draw(hdc, *this);
     }
 }
@@ -48,15 +48,11 @@ bool Canvas::isCoordinateFree(const Coordinate &coordinate) {
     return this->coordinates[coordinate];
 }
 
-void Canvas::addBlocks(const std::vector<Block>& blocks) {
-    for (auto& block: blocks) {
+void Canvas::addBlocks(const std::vector<Block> &blocks) {
+    for (auto &block: blocks) {
         this->blocks.push_back(block);
         this->coordinates[block.getCoordinate()] = false;
     }
-}
-
-const std::vector<Block> &Canvas::getBlocks() const {
-    return blocks;
 }
 
 int Canvas::breakLines() {
@@ -65,11 +61,11 @@ int Canvas::breakLines() {
         bool canBreak = true;
         for (int j = 0; j < 10; ++j) {
             Coordinate coordinate(j, i);
-            if(coordinates[coordinate]) {
+            if (coordinates[coordinate]) {
                 canBreak = false;
             }
         }
-        if(canBreak) {
+        if (canBreak) {
             breakLine(i);
             i = 20;
             brokenLinesCount++;
@@ -82,7 +78,7 @@ void Canvas::breakLine(const int &i) {
     for (int j = 0; j < 10; ++j) {
         Coordinate coordinate(j, i);
         coordinates[coordinate] = true;
-        auto it = std::find_if(blocks.begin(), blocks.end(), [j, i](const Block& block) {
+        auto it = std::find_if(blocks.begin(), blocks.end(), [j, i](const Block &block) {
             return block.getCoordinate().getX() == j && block.getCoordinate().getY() == i;
         });
         if (it != blocks.end()) {
@@ -93,7 +89,7 @@ void Canvas::breakLine(const int &i) {
     // check for free coordinates in each row below the broken line
     for (int k = i - 1; k >= 0; --k) {
         for (int j = 0; j < 10; ++j) {
-            auto it = std::find_if(blocks.begin(), blocks.end(), [j, k](const Block& block) {
+            auto it = std::find_if(blocks.begin(), blocks.end(), [j, k](const Block &block) {
                 return block.getCoordinate().getX() == j && block.getCoordinate().getY() == k;
             });
             if (it != blocks.end()) {

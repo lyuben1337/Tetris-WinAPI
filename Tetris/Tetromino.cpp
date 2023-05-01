@@ -97,21 +97,21 @@ void Tetromino::draw(HDC hdc, const Canvas &canvas) {
 void Tetromino::move(int direction, Canvas canvas) {
     if (canMove(direction, canvas)) {
         switch (direction) {
-            case D_DOWN:
+            case DIRECTION_DOWN:
                 for (auto &block: this->blocks) {
                     Coordinate newCoordinate = block.getCoordinate();
                     newCoordinate.setY(newCoordinate.getY() + 1);
                     block.setCoordinate(newCoordinate);
                 }
                 break;
-            case D_LEFT:
+            case DIRECTION_LEFT:
                 for (auto &block: this->blocks) {
                     Coordinate newCoordinate = block.getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     block.setCoordinate(newCoordinate);
                 }
                 break;
-            case D_RIGHT:
+            case DIRECTION_RIGHT:
                 for (auto &block: this->blocks) {
                     Coordinate newCoordinate = block.getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
@@ -125,7 +125,7 @@ void Tetromino::move(int direction, Canvas canvas) {
 }
 
 void Tetromino::rotate(Canvas canvas) {
-    if(canRotate(canvas)) {
+    if (canRotate(canvas)) {
         Coordinate newCoordinate;
         switch (this->type) {
             case I_TETROMINO:
@@ -470,7 +470,7 @@ void Tetromino::rotate(Canvas canvas) {
 
 bool Tetromino::canMove(int direction, Canvas canvas) {
     switch (direction) {
-        case D_DOWN: {
+        case DIRECTION_DOWN: {
             for (auto block: this->blocks) {
                 Coordinate newCoordinate = block.getCoordinate();
                 newCoordinate.setY(newCoordinate.getY() + 1);
@@ -480,7 +480,7 @@ bool Tetromino::canMove(int direction, Canvas canvas) {
             }
             return true;
         }
-        case D_LEFT: {
+        case DIRECTION_LEFT: {
             for (auto block: this->blocks) {
                 Coordinate newCoordinate = block.getCoordinate();
                 newCoordinate.setX(newCoordinate.getX() - 1);
@@ -490,7 +490,7 @@ bool Tetromino::canMove(int direction, Canvas canvas) {
             }
             return true;
         }
-        case D_RIGHT: {
+        case DIRECTION_RIGHT: {
             for (auto block: this->blocks) {
                 Coordinate newCoordinate = block.getCoordinate();
                 newCoordinate.setX(newCoordinate.getX() + 1);
@@ -514,19 +514,19 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 2);
                     newCoordinate.setY(newCoordinate.getY() - 2);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -534,19 +534,19 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 2);
                     newCoordinate.setY(newCoordinate.getY() + 2);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -558,19 +558,19 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -578,19 +578,19 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -598,19 +598,19 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -618,23 +618,23 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
-                }
+            }
             return true;
         case S_TETROMINO:
             switch (this->rotation) {
@@ -642,25 +642,25 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 2);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -668,25 +668,25 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 2);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -698,25 +698,25 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 2);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -724,25 +724,25 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 2);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -754,25 +754,25 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 2);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -780,25 +780,25 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 2);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() - 2);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -806,25 +806,25 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 2);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() + 2);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -832,19 +832,19 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() - 2);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -856,25 +856,25 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 2);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() - 2);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -882,25 +882,25 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() + 2);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -908,19 +908,19 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 1);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() + 2);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;
@@ -928,25 +928,25 @@ bool Tetromino::canRotate(Canvas canvas) {
                     newCoordinate = this->blocks[0].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX());
                     newCoordinate.setY(newCoordinate.getY() - 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[1].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY());
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[2].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 2);
                     newCoordinate.setY(newCoordinate.getY() + 1);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     newCoordinate = this->blocks[3].getCoordinate();
                     newCoordinate.setX(newCoordinate.getX() - 1);
                     newCoordinate.setY(newCoordinate.getY() + 2);
-                    if(!canvas.isCoordinateFree(newCoordinate)) {
+                    if (!canvas.isCoordinateFree(newCoordinate)) {
                         return false;
                     }
                     return true;

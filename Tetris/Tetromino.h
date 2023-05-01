@@ -11,12 +11,19 @@
 class Tetromino {
 public:
     Tetromino(int x, int y, int type = O_TETROMINO);
+
     static Tetromino RandomTetromino();
-    void draw(HDC hdc, const Canvas& canvas);
+
+    void draw(HDC hdc, const Canvas &canvas);
+
     void move(int direction, Canvas canvas);
+
     void rotate(Canvas canvas);
+
     bool canMove(int direction, Canvas canvas);
+
     const std::vector<Block> &getBlocks() const;
+
     int getType() const;
 
 private:
@@ -25,6 +32,7 @@ private:
     Coordinate coordinate{};
     int color{};
     std::vector<Block> blocks{};
+
     bool canRotate(Canvas canvas);
 };
 

@@ -6,7 +6,6 @@
 #define TETRIS_WINAPI_COORDINATE_H
 
 
-
 class Coordinate {
 public:
     int getX() const;
@@ -21,7 +20,7 @@ public:
 
     Coordinate();
 
-    bool operator<(const Coordinate& other) const;
+    bool operator<(const Coordinate &other) const;
 
 private:
     int x{};
