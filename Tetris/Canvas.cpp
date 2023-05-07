@@ -86,7 +86,6 @@ void Canvas::breakLine(const int &i) {
         }
     }
 
-    // check for free coordinates in each row below the broken line
     for (int k = i - 1; k >= 0; --k) {
         for (int j = 0; j < 10; ++j) {
             auto it = std::find_if(blocks.begin(), blocks.end(), [j, k](const Block &block) {

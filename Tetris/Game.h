@@ -27,7 +27,6 @@ public:
 private:
     int difficulty{};
     int score{};
-    bool gameOver{};
     time_t startTime{};
 };
 

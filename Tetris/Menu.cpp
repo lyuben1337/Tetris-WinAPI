@@ -26,7 +26,6 @@ void Menu::draw(HDC hdc) {
 }
 
 void Menu::drawAbout(HDC hdc) {
-    HBRUSH hBrushFill = CreateSolidBrush(RGB(255, 255, 255));
     HFONT hFont = CreateFont(48, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
                              DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
                              CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
@@ -48,7 +47,6 @@ void Menu::drawAbout(HDC hdc) {
 }
 
 void Menu::drawItems(HDC hdc) {
-    HBRUSH hBrushFill = CreateSolidBrush(RGB(255, 255, 255));
     HFONT hFont = CreateFont(72, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
                              DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
                              CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
@@ -92,7 +90,6 @@ void Menu::drawItems(HDC hdc) {
 
     SelectObject(hdc, hOldFont);
     DeleteObject(hFont);
-
 }
 
 void Menu::setRect(const RECT &rect) {

@@ -60,31 +60,25 @@ void HUD::setNextTetrominoType(int nextTetrominoType) {
 }
 
 void HUD::drawTime(HDC hdc) {
-    // Создаем новый объект шрифта
     HFONT hFont = CreateFont(32, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
                              DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
                              CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY,
                              DEFAULT_PITCH | FF_SWISS, TEXT("Arial"));
 
-    // Устанавливаем новый шрифт на контекст устройства
     HFONT hOldFont = (HFONT) SelectObject(hdc, hFont);
 
-    // Рассчитываем значения минут и секунд
     int seconds = this->time / 1000;
     int minutes = seconds / 60;
     seconds %= 60;
 
-    // Форматируем строку с таймером
     std::string timerString = std::to_string(minutes) + ":" +
                               (seconds < 10 ? "0" : "") + std::to_string(seconds);
 
-    // Рисуем текст с таймером на контексте устройства
     SIZE size;
     GetTextExtentPoint32(hdc, timerString.c_str(), strlen(timerString.c_str()), &size);
     TextOut(hdc, (this->rect.left + this->rect.right) / 2 - size.cx / 2, this->rect.top + BLOCK_SIZE,
             timerString.c_str(), timerString.length());
 
-    // Восстанавливаем старый шрифт и удаляем новый объект шрифта
     SelectObject(hdc, hOldFont);
     DeleteObject(hFont);
 }

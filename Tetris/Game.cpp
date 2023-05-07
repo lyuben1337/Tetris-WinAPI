@@ -20,7 +20,6 @@ void Game::setScore(int score) {
 Game::Game(int difficulty) {
     this->difficulty = difficulty;
     this->score = 0;
-    this->gameOver = false;
     this->startTime = time(NULL);
 }
 
